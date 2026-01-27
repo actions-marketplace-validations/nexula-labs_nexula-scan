@@ -1,0 +1,40 @@
+name: 'Nexula Scan'
+description: 'AI/ML Security Scanner - 10 Specialized Scanners for Comprehensive Security Analysis'
+author: 'Nexula Labs'
+
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  api-key:
+    description: 'Nexula API Key (get free at nexula.one)'
+    required: true
+  scan-type:
+    description: 'Scan type: unified, vulnerability, llm_rag, ml_security, dataset_poisoning, model_poisoning, adversarial_robustness, zero_day, container, sast'
+    required: false
+    default: 'unified'
+  fail-on-critical:
+    description: 'Fail build if critical vulnerabilities found'
+    required: false
+    default: 'true'
+  fail-on-high:
+    description: 'Fail build if high severity vulnerabilities found'
+    required: false
+    default: 'false'
+
+outputs:
+  scan-id:
+    description: 'Scan run ID for tracking'
+  findings-count:
+    description: 'Total number of findings'
+  critical-count:
+    description: 'Number of critical findings'
+  high-count:
+    description: 'Number of high severity findings'
+  scan-url:
+    description: 'URL to view detailed scan results'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
